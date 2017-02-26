@@ -39,20 +39,21 @@ with open(os.path.join(TEXT_DATA_DIR, "reviews_rt_all.csv"), "r") as f:
     for line in f:
         temp_y, temp_x = line.rstrip("\n").split("|")
 
-        if i < TRAIN_LEN:
-            X_train.append(temp_x)
-            y_train.append(temp_y)
-        elif i < TRAIN_LEN+25000:
-            X_test.append(temp_x)
-            y_test.append(temp_y)
-        else:
-            break
-
         X.append(temp_x)
         y.append(temp_y)
 
         i+=1
 
+indices = np.arange(len(X))
+np.random.shuffle(indices)
+
+for i in indices[:TRAIN_LEN]:
+    X_train.append(X[i])
+    y_train.append(y[i])
+
+for i in indices[TRAIN_LEN:]:
+    X_test.append(X[i])
+    y_test.append(y[i])
 
 MAX_NB_WORDS = 20000
 EMBEDDING_DIM = 100
