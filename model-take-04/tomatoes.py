@@ -63,7 +63,7 @@ EPOCHS=10
 
 tokenizer = Tokenizer(nb_words=MAX_NB_WORDS) # create dictionary of MAX_NB_WORDS, other words will not be used
 tokenizer.fit_on_texts(X)
-six.moves.cPickle.dump(tokenizer, open("cnn_tokenizer", "wb"))
+six.moves.cPickle.dump(tokenizer, open("tokenizer.pkl", "wb"))
 
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
 sequences_train = tokenizer.texts_to_sequences(X_train) # transform words to its indexes

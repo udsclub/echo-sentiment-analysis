@@ -48,7 +48,7 @@ MAX_SEQUENCE_LENGTH = 40
 BATCH_SIZE=32
 EPOCHS=1
 
-tokenizer = six.moves.cPickle.load(open("cnn_tokenizer", "rb"))
+tokenizer = six.moves.cPickle.load(open("tokenizer.pkl", "rb"))
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
 
 word_index = tokenizer.word_index # dictionary of word:index
