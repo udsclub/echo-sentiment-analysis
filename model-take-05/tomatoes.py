@@ -13,6 +13,8 @@ from keras.layers import LSTM, Bidirectional
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import TensorBoard
 
+from sklearn.model_selection import train_test_split
+
 import six.moves.cPickle
 
 BASE_DIR = ''
@@ -21,17 +23,17 @@ TEXT_DATA_DIR = '../../data/'
 HEADER = True
 
 
-TRAIN_LEN=75000
-TEST_LEN=25000
+# TRAIN_LEN=75000
+# TEST_LEN=25000
 
 X = []
 y = []
 
-X_train = []
-y_train = []
-
-X_test = []
-y_test = []
+# X_train = []
+# y_train = []
+# 
+# X_test = []
+# y_test = []
 
 i=0
 with open(os.path.join(TEXT_DATA_DIR, "reviews_rt_all.csv"), "r") as f:
@@ -45,22 +47,25 @@ with open(os.path.join(TEXT_DATA_DIR, "reviews_rt_all.csv"), "r") as f:
 
         i+=1
 
-indices = np.arange(TRAIN_LEN)
-np.random.shuffle(indices)
+# indices = np.arange(TRAIN_LEN)
+# np.random.shuffle(indices)
+# 
+# for i in indices:
+#     X_train.append(X[i])
+#     y_train.append(y[i])
+# 
+# for i in range(TRAIN_LEN, TRAIN_LEN+TEST_LEN): #len(X)):
+#     X_test.append(X[i])
+#     y_test.append(y[i])
 
-for i in indices:
-    X_train.append(X[i])
-    y_train.append(y[i])
-
-for i in range(TRAIN_LEN, TRAIN_LEN+TEST_LEN): #len(X)):
-    X_test.append(X[i])
-    y_test.append(y[i])
+print("splitting data to train and test")
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 MAX_NB_WORDS = 20000
 EMBEDDING_DIM = 100
 MAX_SEQUENCE_LENGTH = 50
 BATCH_SIZE=32
-EPOCHS=1
+EPOCHS=10
 
 
 tokenizer = Tokenizer(nb_words=MAX_NB_WORDS) # create dictionary of MAX_NB_WORDS, other words will not be used
