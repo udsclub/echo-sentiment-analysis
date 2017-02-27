@@ -106,9 +106,9 @@ for line in f:
     embeddings_index[word] = coefs
 f.close()
 
-if os.path.isfile("tomatoes-modelqwe.h5a"):
+if os.path.isfile("imdb_small.h5"):
     print("Loading model...")
-    model = load_model("tomatoes-model.h5")
+    model = load_model("imdb_small.h5")
     print("done")
 else:
 
