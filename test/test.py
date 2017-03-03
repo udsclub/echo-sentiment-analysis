@@ -15,8 +15,6 @@ import six.moves.cPickle
 
 DATA_DIR = os.environ.get("DATA_DIR", '.')
 INPUT_PATH= os.path.join(DATA_DIR, os.environ.get("INPUT_PATH", 'imdb-rt.csv'))
-# https://drive.google.com/open?id=0B8cauxN6J-tlSGdtbW92Z2RkYTg
-
 
 HEADER = True
 
