@@ -1,3 +1,6 @@
+
+# pip instal keras tensorflow h5py
+
 import os
 import numpy as np
 from keras.preprocessing.text import Tokenizer
@@ -36,17 +39,17 @@ with open(INPUT_PATH, "r") as f:
 
         
 BATCH_SIZE=256
-MAX_SEQUENCE_LENGTH=40
+MAX_SEQUENCE_LENGTH=220
 
 tokenizer = six.moves.cPickle.load(open("tokenizer.pkl", "rb"))
-# https://drive.google.com/file/d/0B8cauxN6J-tlWGc2cVVNSnVXRHc/view
+# https://drive.google.com/open?id=0B8cauxN6J-tlcTVybWhXOFYzeFE
 
 model = load_model("model.h5")
-# https://drive.google.com/open?id=0B8cauxN6J-tlOEVVR3RaWE12aXc
+# https://drive.google.com/open?id=0B8cauxN6J-tldnJUZ2NMZENON1E
 
 # $ md5sum model.h5 tokenizer.pkl 
-# 7993da66d7ca01fa4bf9a8593ad2432c  model.h5
-# 5064e042c1bcc4dd3b3f8ffc77a75edf  tokenizer.pkl
+# 5c8796035b2793ee84a638319e914002  model.h5
+# 97b4ab4aac1e9600a9b92c97192b3ac0  tokenizer.pkl
 
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
 
