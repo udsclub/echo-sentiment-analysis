@@ -39,7 +39,7 @@ BATCH_SIZE=256
 MAX_SEQUENCE_LENGTH=40
 
 tokenizer = six.moves.cPickle.load(open("tokenizer.pkl", "rb"))
-# https://drive.google.com/open?id=0B8cauxN6J-tlUkxFTVNZTE1vRDA
+# https://drive.google.com/file/d/0B8cauxN6J-tlWGc2cVVNSnVXRHc/view
 
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
 
@@ -53,7 +53,7 @@ print('Shape of data tensor:', data.shape)
 print('Shape of label tensor:', labels.shape)
 
 model = load_model("model.h5")
-# https://drive.google.com/open?id=0B8cauxN6J-tlQWI3RWtBM1VhdEU
+# https://drive.google.com/open?id=0B8cauxN6J-tlOEVVR3RaWE12aXc
 
 score, acc = model.evaluate(data, labels, batch_size=BATCH_SIZE)
 
