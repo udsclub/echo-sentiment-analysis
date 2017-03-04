@@ -41,6 +41,13 @@ MAX_SEQUENCE_LENGTH=40
 tokenizer = six.moves.cPickle.load(open("tokenizer.pkl", "rb"))
 # https://drive.google.com/file/d/0B8cauxN6J-tlWGc2cVVNSnVXRHc/view
 
+model = load_model("model.h5")
+# https://drive.google.com/open?id=0B8cauxN6J-tlOEVVR3RaWE12aXc
+
+# $ md5sum model.h5 tokenizer.pkl 
+# 7993da66d7ca01fa4bf9a8593ad2432c  model.h5
+# 5064e042c1bcc4dd3b3f8ffc77a75edf  tokenizer.pkl
+
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
 
 word_index = tokenizer.word_index # dictionary of word:index
@@ -52,8 +59,6 @@ labels = to_categorical(np.asarray(y))
 print('Shape of data tensor:', data.shape)
 print('Shape of label tensor:', labels.shape)
 
-model = load_model("model.h5")
-# https://drive.google.com/open?id=0B8cauxN6J-tlOEVVR3RaWE12aXc
 
 score, acc = model.evaluate(data, labels, batch_size=BATCH_SIZE)
 
