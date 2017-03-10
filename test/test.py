@@ -45,10 +45,10 @@ tokenizer = six.moves.cPickle.load(open("tokenizer.pkl", "rb"))
 # https://drive.google.com/open?id=0B8cauxN6J-tlcTVybWhXOFYzeFE
 
 model = load_model("model.h5")
-# https://drive.google.com/open?id=0B8cauxN6J-tldnJUZ2NMZENON1E
+# https://drive.google.com/open?id=0B8cauxN6J-tlWmEybVRySFQwM2M
 
-# $ md5sum model.h5 tokenizer.pkl 
-# 5c8796035b2793ee84a638319e914002  model.h5
+# $ md5sum model.h5 tokenizer.pkl
+# a3c47bc1f5cf41955616942fd3a20032  model.h5
 # 97b4ab4aac1e9600a9b92c97192b3ac0  tokenizer.pkl
 
 sequences = tokenizer.texts_to_sequences(X) # transform words to its indexes
